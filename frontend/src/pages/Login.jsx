@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 import 'animate.css';
+import getApiUrl from "../utils/api";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -25,7 +26,7 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/users/login",
+        `${getApiUrl()}/api/users/login`,
         { email, password, role },
         {
           withCredentials: true,
